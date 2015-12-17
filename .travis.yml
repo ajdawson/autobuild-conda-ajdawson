@@ -1,0 +1,21 @@
+language: c
+
+os:
+    - osx
+
+sudo: false
+
+env:
+    global:
+        secure: "Duh4HRhZn7v/oQLxO0hQ2IjtExLAHtv5PU9g7LiIOheu60mElRGHjzX5gLHccOfOmOWuuuvtHPtNuqJHbZD/lFzWeKa2qUXmFmnRcqY4RgUP6QcLCjcBUv2zWVcXt+1Gh5rqU/oTKtG7kXz+ezeH1JoSRB2xiIdIJjYR68+m0xI7AImmFWYwMzWXj3tKJhyJMnmMJpA4No0v3w+xa0g8cuzNeRsdFQ9y0uukxhalgpJg7pYE1H3tdFbRHMND5uaYMmPmzBaNUCYCwreIFGZDxuUysOEc4OVaOsYJdIVtZ8UZPzkc5A9Q0UhneV2QNcIF5XAX36KEZjKGcHbASDYqjrCmMML+4uY1eAG6/rPMcw8YtC7Pr1uGsrvgkladx1lYge9ApnAqvkgPAwrjaRXlxisB9d34n+YRVBGUJfLQ7oKco1sYdJmf0jgUKaukKRWr+lXqQE5pV/QltVwIUPA2BtplkTytb2B8gRR0Lels9/JzyMTRhkkrR7KnuMPHsncOXieV/Zud/rxsufuhFVlMSnEVjTkdomcYx31aD19WajD8NJXKCkTUI8XUy0OQHXzNa4Vl2/TO2SW1G03FIeeGXADZooHDbttqwvRWumJZiT0Aq5jiYEPoy/vZxnw7fURm1jEXZHLJVNZUqmCjTQeh3ZEOhvhF5VsLwTjSJrR+15s="
+
+install:
+    - wget https://raw.githubusercontent.com/pelson/Obvious-CI/master/bootstrap-obvious-ci-and-miniconda.py
+    - python bootstrap-obvious-ci-and-miniconda.py ~/miniconda x64 2 --without-obvci && source ~/miniconda/bin/activate root
+    - conda config --set show_channel_urls True
+    - conda install -c conda-forge --yes --quiet obvious-ci conda-build
+    - conda config --add channels http://conda.binstar.org/ajdawson
+    - obvci_install_conda_build_tools.py
+
+script:
+    - obvci_conda_build_dir ./ ajdawson --channel test --build-condition "numpy >=1.8" "python >=2.7,<3|>=3.3"
