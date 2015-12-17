@@ -1,0 +1,28 @@
+package:
+    name: eofs
+    version: 0.5.1
+
+source:
+    git_url: git://github.com/ajdawson/eofs.git
+    git_tag: v0.5.1
+
+build:
+    number: 2
+
+requirements:
+    build:
+        - python
+        - setuptools
+    run:
+        - python
+        - numpy
+
+test:
+    requires:
+        - nose
+    imports:
+        - eofs
+
+about:
+    home: http://ajdawson.github.io/eofs/
+    license: GPL v3
