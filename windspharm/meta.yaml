@@ -1,0 +1,30 @@
+package:
+    name: windspharm
+    version: 1.3.2
+
+source:
+    git_url: git://github.com/ajdawson/windspharm.git
+    git_tag: v1.3.2
+
+build:
+    skip: True # [win]
+    number: 2
+
+requirements:
+    build:
+        - python
+        - setuptools
+    run:
+        - python
+        - numpy
+        - pyspharm
+
+test:
+    requires:
+        - nose
+    imports:
+        - windspharm
+
+about:
+    home: http://ajdawson.github.io/windspharm/
+    license: MIT
