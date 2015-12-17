@@ -15,7 +15,7 @@ source:
 
 build:
     skip: True # [win]
-    number: 4
+    number: 5
 
 requirements:
     build:
@@ -23,6 +23,7 @@ requirements:
         - setuptools
         - numpy x.x
     run:
+        - libgcc
         - python
         - numpy x.x
 
