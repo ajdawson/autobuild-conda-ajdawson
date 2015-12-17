@@ -1,0 +1,36 @@
+package:
+    name: pyspharm
+    version: 1.0.8
+
+source:
+    # Source obtained from the Google Code site, using released versions:
+    fn: pyspharm-1.0.8.tar.gz
+    url: https://pyspharm.googlecode.com/files/pyspharm-1.0.8.tar.gz
+    md5: 7b3a33dd3cbeaa4b8bf67ed5bd210931
+    sha1: 895e5336a757808cece303a6a6be7e6b007f7062
+    sha256: 4c1b8cfaf6672850225db200d0c3b6c379c48a611fa7a783fc3469603304eb83
+    # Add in a patch on Python 3 since pyspharm doesn't support Python 3 yet:
+    patches:
+        - pyspharm.python3.patch # [py3k]
+
+build:
+    skip: True # [win]
+    number: 3
+
+requirements:
+    build:
+        - python
+        - setuptools
+        - numpy x.x
+    run:
+        - python
+        - numpy x.x
+
+test:
+    imports:
+        - spharm
+ 
+about:
+    # Legally required to mention SPHEREPACK license somewhere:
+    home: https://code.google.com/p/pyspharm/
+    license: MIT and SPHEREPACK (https://www2.cisl.ucar.edu/resources/legacy/spherepack/license)
