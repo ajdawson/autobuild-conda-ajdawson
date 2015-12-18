@@ -2,9 +2,6 @@ language: c
 
 os:
     - osx
-    - linux
-
-sudo: false
 
 addons:
     apt:
@@ -24,6 +21,7 @@ install:
     - conda install -c conda-forge --yes --quiet obvious-ci conda-build
     - conda config --add channels http://conda.binstar.org/ajdawson/channel/test
     - obvci_install_conda_build_tools.py
+    - if [[ $TRAVIS_OS_NAME == osx ]]; then sudo rm -f /usr/local/lib/gcc/x86_64-apple-darwin13.3.0/4.9.1/libquadmath*.dylib; fi
 
 script:
     - obvci_conda_build_dir ./ ajdawson --channel test --build-condition "numpy >=1.8" "python >=2.7,<3|>=3.3"
