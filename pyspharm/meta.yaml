@@ -15,22 +15,22 @@ source:
 
 build:
     skip: True # [win]
-    number: 10
+    number: 11
 
 requirements:
     build:
-        - libgcc
         - python
         - setuptools
         - numpy x.x
     run:
-        - libgcc
         - python
         - numpy x.x
 
 test:
     imports:
         - spharm
+    commands:
+        - conda inspect linkages pyspharm -n _test
  
 about:
     # Legally required to mention SPHEREPACK license somewhere:
