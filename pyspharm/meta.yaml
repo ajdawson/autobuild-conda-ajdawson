@@ -15,7 +15,7 @@ source:
 
 build:
     skip: True # [win]
-    number: 11
+    number: 12
 
 requirements:
     build:
@@ -30,7 +30,7 @@ test:
     imports:
         - spharm
     commands:
-        - conda inspect linkages pyspharm -n _test
+        - if conda inspect linkages pyspharm -n _test | grep libquadmath >/dev/null; then false; else true; fi # [osx]
  
 about:
     # Legally required to mention SPHEREPACK license somewhere:
