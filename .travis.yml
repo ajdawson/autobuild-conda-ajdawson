@@ -20,7 +20,7 @@ install:
     - python bootstrap-obvious-ci-and-miniconda.py ~/miniconda x64 2 --without-obvci && source ~/miniconda/bin/activate root
     - conda config --set show_channel_urls True
     - conda install -c conda-forge --yes --quiet obvious-ci
-    - conda config --add channels http://conda.binstar.org/ajdawson/channel/test
+    - conda config --add channels http://conda.binstar.org/ajdawson/channel/main
     - obvci_install_conda_build_tools.py
     - conda install --yes conda-build=1.18.2
     - if [[ $TRAVIS_OS_NAME == osx ]]; then sudo rm -f /usr/local/lib/gcc/x86_64-apple-darwin13.3.0/4.9.1/libquadmath*.dylib; fi
