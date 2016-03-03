@@ -1,10 +1,10 @@
 package:
     name: eofs
-    version: 1.0.0
+    version: 1.1.0
 
 source:
     git_url: git://github.com/ajdawson/eofs.git
-    git_tag: v1.0.0
+    git_tag: v1.1.0
 
 build:
     number: 1
