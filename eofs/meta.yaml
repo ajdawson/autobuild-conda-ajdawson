@@ -20,6 +20,7 @@ requirements:
 test:
     requires:
         - nose
+        - pep8
     imports:
         - eofs
 
